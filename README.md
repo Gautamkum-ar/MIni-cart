@@ -2,5 +2,4 @@
 
 
 
-# MIni-cart
-# MIni_cart
+# Mini_cart
