@@ -8,6 +8,7 @@ const ContextProvider = ({ children }) => {
   const [userInput, setUserInput] = useState("");
   const [wishlist, setWishlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filterBox, setFilterBox] = useState(false);
   const getData = async () => {
     try {
       const data = await fetch("https://dummyjson.com/products");
@@ -21,12 +22,10 @@ const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     getData();
-    // fetch("https://dummyjson.com/products")
-    //   .then((res) => res.json())
-    //   .then((data) => data && setData(data.products));
   }, []);
-  // console.log(datas);
-
+  const handleFilterBox = () => {
+    setFilterBox(!filterBox);
+  };
   const handleCart = (item) => {
     const cart = cartItem.find(({ id }) => id === item.id);
     if (!cart) {
@@ -139,6 +138,8 @@ const ContextProvider = ({ children }) => {
         handleRemoveQuantityInCart,
         handleAddQuantityInCart,
         handleRemoveFromWish,
+        handleFilterBox,
+        filterBox,
       }}
     >
       {children}

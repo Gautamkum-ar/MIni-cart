@@ -24,8 +24,12 @@
 
     .filter_box{
         width: 80%;
-        height: 80vh;
+        height: 60vh;
         margin: auto;
+    }
+    .product__main{
+        display: flex;
+        flex-direction: column;
     }
     .product_list{
         width: 80%;
@@ -33,6 +37,8 @@
     }
     .product_card{
         margin: 10px auto;
+        width: 100%;
+
     }
     .cart__noItems{
         width: 100%;

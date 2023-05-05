@@ -2,21 +2,16 @@ import { useContext } from "react";
 import { ProductContext } from "../contexts/Context";
 
 export const Filter = () => {
-  const { handleCheckBox, setUserInput } = useContext(ProductContext);
+  const { handleCheckBox, setUserInput, handleFilterBox } =
+    useContext(ProductContext);
   return (
     <section className="filter_box">
       <fieldset>
+        <button onClick={() => handleFilterBox()}>X</button>
         <legend>
           <h2>FILTERS: </h2>
         </legend>
-        <label>
-          <input
-            onChange={(e) => setUserInput(e.target.value)}
-            type="text"
-            placeholder="Search by name.."
-            className="search_input"
-          />
-        </label>
+
         <p className="head_filter">Filter by Price:</p>
         <label htmlFor="input">
           Price-Low To High

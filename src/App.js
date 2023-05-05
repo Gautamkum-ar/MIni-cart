@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { ProductContext } from "./contexts/Context";
 import SingleProduct from "./pages/SingleProduct";
 import { Buy } from "./pages/Buy";
+import { Landing } from "./pages/Landing";
 
 function App() {
   const { totalItemInCart, cartItem, wishlist } = useContext(ProductContext);
@@ -24,7 +25,7 @@ function App() {
       <header className="nav_bar">
         <h1>Mini Mart</h1>
         <nav>
-          <NavLink style={handleLink} to="/">
+          <NavLink style={handleLink} to="/home">
             <FaHome />
           </NavLink>
           <NavLink style={handleLink} to="/cart">
@@ -42,11 +43,12 @@ function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/single/:productId" element={<SingleProduct />} />
         <Route path="/buy" element={<Buy />} />
+        <Route path="/" element={<Landing />} />
       </Routes>
     </div>
   );
