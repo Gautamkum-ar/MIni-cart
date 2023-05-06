@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { ProductContext } from "../contexts/Context";
 
 export const Filter = () => {
-  const { handleCheckBox, setUserInput, handleFilterBox } =
-    useContext(ProductContext);
+  const { handleCheckBox, handleFilterBox } = useContext(ProductContext);
   return (
     <section className="filter_box">
       <fieldset>
-        <button onClick={() => handleFilterBox()}>X</button>
+        <button className="close__btn" onClick={() => handleFilterBox()}>
+          X
+        </button>
         <legend>
           <h2>FILTERS: </h2>
         </legend>
@@ -79,6 +80,7 @@ export const Filter = () => {
             onChange={(e) => handleCheckBox(e)}
           />
         </label>
+        <button className="clear__filter">Clear Filter</button>
       </fieldset>
     </section>
   );

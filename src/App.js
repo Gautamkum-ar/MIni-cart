@@ -1,5 +1,6 @@
 import "./App.css";
 import "./components/imgSlider/Style.css";
+import "./components/filterStyle.css";
 import "./pages/Responsive.css";
 
 import { Home } from "./pages/Home";

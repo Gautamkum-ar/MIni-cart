@@ -82,6 +82,7 @@ const ContextProvider = ({ children }) => {
     }
   };
   console.log(checkboxes);
+
   const handleSorting = () => {
     let item = [...datas];
 
