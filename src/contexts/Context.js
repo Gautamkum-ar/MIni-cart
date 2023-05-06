@@ -81,6 +81,7 @@ const ContextProvider = ({ children }) => {
       setCheckboxes(checkboxes.filter((elms) => elms !== e.target.value));
     }
   };
+  const handleRemoveFilter = () => setCheckboxes([]);
   console.log(checkboxes);
 
   const handleSorting = () => {
@@ -141,6 +142,7 @@ const ContextProvider = ({ children }) => {
         handleRemoveFromWish,
         handleFilterBox,
         filterBox,
+        handleRemoveFilter,
       }}
     >
       {children}
