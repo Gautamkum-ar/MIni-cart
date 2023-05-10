@@ -2,8 +2,18 @@
 
 @media only screen and (max-width: 600px) {
  
-    .App .nav_bar{
+    .nav_bar{
         font-size: 1.0em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .search__label__mob{
+        display: block;
+      
+
+        }
+    .search__label{
+        display: none;
     }
 
     .cart{
@@ -24,8 +34,9 @@
 
     .filter_box{
         width: 70%;
-        /* height: 70vh; */
-        /* margin: auto; */
+        left: 15%;
+        top: 119px;
+        margin: auto;
     }
     .product__main{
         display: flex;

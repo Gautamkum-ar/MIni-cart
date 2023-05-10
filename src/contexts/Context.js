@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 
 export const ProductContext = createContext();
+
 const ContextProvider = ({ children }) => {
   const [datas, setData] = useState([]);
   const [cartItem, setCartItem] = useState([]);
@@ -9,6 +10,9 @@ const ContextProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [filterBox, setFilterBox] = useState(false);
+  const [handleToaster, setHandleToaster] = useState(false);
+  const [handleWishToaster, setHandleWishToaster] = useState(false);
+
   const getData = async () => {
     try {
       const data = await fetch("https://dummyjson.com/products");
@@ -23,9 +27,12 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     getData();
   }, []);
+
   const handleFilterBox = () => {
     setFilterBox(!filterBox);
   };
+
+  let timer = "";
   const handleCart = (item) => {
     const cart = cartItem.find(({ id }) => id === item.id);
     if (!cart) {
@@ -33,13 +40,26 @@ const ContextProvider = ({ children }) => {
     } else {
       setCartItem([...cartItem]);
     }
+    setHandleToaster(true);
+
+    timer = setTimeout(() => {
+      setHandleToaster(false);
+    }, 3000);
   };
+
+  const handleClosetoaster = () => {
+    setHandleToaster(false);
+    clearTimeout(timer);
+  };
+
   const handleRemoveFromCart = (id) => {
     setCartItem(cartItem.filter((elms) => elms.id !== id));
   };
+
   const handleRemoveFromWish = (id) => {
     setWishlist(wishlist.filter((elms) => elms.id !== id));
   };
+
   const handleWishList = (item) => {
     const cart = wishlist.find(({ id }) => id === item.id);
     if (!cart) {
@@ -47,7 +67,12 @@ const ContextProvider = ({ children }) => {
     } else {
       setWishlist([...wishlist]);
     }
+    setHandleWishToaster(true);
+    setTimeout(() => {
+      setHandleWishToaster(false);
+    }, 3000);
   };
+
   const handleRemoveQuantityInCart = (id) => {
     setCartItem(
       cartItem.map((elms) =>
@@ -60,6 +85,7 @@ const ContextProvider = ({ children }) => {
       )
     );
   };
+
   const handleAddQuantityInCart = (id) => {
     setCartItem(
       cartItem.map((elms) =>
@@ -72,7 +98,6 @@ const ContextProvider = ({ children }) => {
       )
     );
   };
-
   const handleCheckBox = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -81,8 +106,9 @@ const ContextProvider = ({ children }) => {
       setCheckboxes(checkboxes.filter((elms) => elms !== e.target.value));
     }
   };
-  const handleRemoveFilter = () => setCheckboxes([]);
-  console.log(checkboxes);
+  const handleRemoveFilter = () => {
+    setCheckboxes([]);
+  };
 
   const handleSorting = () => {
     let item = [...datas];
@@ -119,7 +145,6 @@ const ContextProvider = ({ children }) => {
   };
 
   const totalItemInCart = cartItem.length;
-  console.log("context", datas);
 
   return (
     <ProductContext.Provider
@@ -143,6 +168,9 @@ const ContextProvider = ({ children }) => {
         handleFilterBox,
         filterBox,
         handleRemoveFilter,
+        handleToaster,
+        handleClosetoaster,
+        handleWishToaster,
       }}
     >
       {children}

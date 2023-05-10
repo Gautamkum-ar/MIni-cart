@@ -1,20 +1,36 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../contexts/Context";
+import { FaFilter } from "react-icons/fa";
 
 export const Filter = () => {
   const { handleCheckBox, handleFilterBox, handleRemoveFilter } =
     useContext(ProductContext);
+
+  const category = [
+    "smartphones",
+    "laptops",
+    "groceries",
+    "fragrances",
+    "home-decoration",
+    "skincare",
+  ];
+
   return (
     <section className="filter_box">
+      <span className="icon">
+        <FaFilter />
+      </span>
       <button className="close__btn" onClick={() => handleFilterBox()}>
         X
       </button>
 
       <p className="head_filter">Filter by Price:</p>
+
       <label htmlFor="input">
         Price-Low To High
         <input
-          type="checkbox"
+          type="radio"
+          name="price"
           value="Price-Low To High"
           onChange={(e) => handleCheckBox(e)}
         />
@@ -22,61 +38,20 @@ export const Filter = () => {
       <label htmlFor="input">
         Price-High to Low
         <input
-          type="checkbox"
+          type="radio"
+          name="price"
           value="Price-High to Low"
           onChange={(e) => handleCheckBox(e)}
         />
       </label>
       <p className="head_filter">Filter by Category:</p>
-
-      <label>
-        Smartphones
-        <input
-          type="checkbox"
-          value="smartphones"
-          onChange={(e) => handleCheckBox(e)}
-        />
-      </label>
-      <label>
-        Laptop
-        <input
-          type="checkbox"
-          value="laptops"
-          onChange={(e) => handleCheckBox(e)}
-        />
-      </label>
-      <label>
-        Groceries
-        <input
-          type="checkbox"
-          value="groceries"
-          onChange={(e) => handleCheckBox(e)}
-        />
-      </label>
-      <label>
-        Fragrances
-        <input
-          type="checkbox"
-          value="fragrances"
-          onChange={(e) => handleCheckBox(e)}
-        />
-      </label>
-      <label>
-        Home-Decoration
-        <input
-          type="checkbox"
-          value="home-decoration"
-          onChange={(e) => handleCheckBox(e)}
-        />
-      </label>
-      <label>
-        Skin-Care
-        <input
-          type="checkbox"
-          value="skincare"
-          onChange={(e) => handleCheckBox(e)}
-        />
-      </label>
+      {category.map((elms) => (
+        <label key={elms}>
+          {" "}
+          {elms}
+          <input type="checkbox" value={elms} onChange={handleCheckBox} />
+        </label>
+      ))}
       <button onClick={handleRemoveFilter} className="clear__filter">
         Clear Filter
       </button>

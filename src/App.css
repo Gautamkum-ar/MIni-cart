@@ -7,33 +7,41 @@
 .App{
   display: flex;
   flex-direction: column;
+ 
   width: 100%;
   height: auto;
   background: #202124;
 }
-.App .nav_bar{
+.nav_bar{
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+ 
   align-items: center;
-  padding: 2rem;
+  padding: 0 2rem;
   width: 100%;
   height: 5rem;
   background: #202124;
   box-shadow: 2px 1px 5px #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
  
 }
-.App .nav_bar nav{
+.nav_bar nav{
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+
 }
-.App .nav_bar h1{
+.nav_bar h1{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   color: #cac2c2;
 }
-.App .nav_bar a{
+ .nav_bar a{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,11 +51,11 @@
   color: #cac2c2;
 
 }
-.App .nav_bar a .list_item{
+.nav_bar a .list_item{
   display: flex;
   position: relative;
 }
-.App .nav_bar a .list_item span{
+.nav_bar a .list_item span{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,26 +70,11 @@
   right: -5px;
 }
 
-.filterBoxToggle{
-  width: 100px;
-  /* position: fixed; */
- 
-  height: 40px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 10;
 
-}
-.filterBoxToggle:hover{
-  color: #cac2c2;
-  background: #058456;
-}
 .cart{
   display: flex;
- 
-  min-height: 100vh;
+ margin-top: 100px;
+  min-height: 90vh;
   width: 100%;
 
 }
@@ -173,15 +166,18 @@
 .home_page{
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
+margin-top: 100px;
 
 }
 .product__main{
   display: flex;
+  justify-content: center;
   min-height: 90vh;
 }
 .product_list{
   margin-top: 20px;
+  justify-content: center;
   width: 80%;
   padding: 10px;
   display: flex;
@@ -210,7 +206,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-height: 85vh;
+height: 80vh;
 font-size: 2em;
 color: #fff;
 }
@@ -257,10 +253,10 @@ color: #fff;
   border-radius: 5px ;
   height: 90%;
 }
-.product_card .product_img img:hover{
-  height: 96%;
-  width: 77.5%;
-  border-radius: 50%;
+.product_card:hover{
+  box-shadow: rgba(199, 188, 188, 0.35) 0px 5px 15px;
+  transition: 0.4s all ease-in-out;
+  
 }
 
  
@@ -333,7 +329,7 @@ color: #767779df;
   display: flex;
   width: 90%;
   justify-content: center;
-  margin: 10px auto;
+  margin: 20px auto;
 }
 .original_price{
   display: flex;
@@ -352,22 +348,23 @@ color: #767779df;
   height: 25px;
   padding: 5px;
   font-size: 0.9em;
+  color: red;
 }
 .cart__btns .quantity{
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50px;
-  margin: 0px;
   padding: 5px;
   height: 25px;
+margin: 0;
   border: 1px solid gray;
 }
 .cart__btns button{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
+  width: 60px;
   font-size: 1em;
 }
 .product_description button a{
@@ -389,7 +386,9 @@ color: #767779df;
   flex-direction: column;
   align-items: flex-start;
 width: 100%;
-min-height: 90vh;
+min-height: 85vh;
+margin-top: 100px;
+
 }
 .wishlist__page h1{
   display: flex;
@@ -414,7 +413,7 @@ min-height: 90vh;
   align-items: center;
   min-height: 90vh;
   width: 100%;
-  margin: 10px 0;
+ margin-top: 100px;
 }
 .single__page .product__details{
   display: flex;
@@ -610,7 +609,7 @@ a{
   width: 100%;
   height: 100vh;
   color: #fff;
-  margin-top: 30px;
+  margin-top: 100px;
 }
 .landing a{
   display: flex;
